@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include partials/head %>
+</head>
+<body style = "background-color:aquamarine">
+<script>
+
+    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    var constants = Math.floor((Math.random() * 10) + 5);
+    var vowels = Math.floor((Math.random() * 5) + 3);
+    var three_letter = Math.floor((Math.random() * 2) + 3);
+    var four_letter = Math.floor((Math.random() * 3) + 4);
+    var five_letter = Math.floor((Math.random() * 4) + 5);
+    var six_letter = Math.floor((Math.random() * 5) + 6);
+    var seven_plus = Math.floor((Math.random() * 6) + 7);
+    var bonus_letter = alphabet[Math.floor((Math.random()*24))];
+
+
+    function scrambl() {
+        document.getElementById("scram").innerHTML = "<font size=\"5\"<br><br><strong>Constants to be flipped: " + constants + "<br>Vowels to be flipped: " + vowels + "<br></font>";
+    }
+    function refreshPage(){
+        window.location.reload();
+    }
+
+</script>
+<% include partials/menu %>
+
+<div class="container-fluid text-center" style = "background-color: aquamarine">
+    <h3><%= page %></h3><br>
+
+    <div id="scram" style = "background-color: aquamarine">
+        <p><font size="5">Press The Button To Start Game</font></p>
+    </div>
+    <div style = "background-color: aquamarine">
+        <br>
+    </div>
+    <div style = "background-color: aquamarine">
+        <button type="button" class="btn btn-primary text-center" style = "background-color: tomato" onclick="scrambl()">Scramble!</button>
+        <div>
+            <br>
+            <button type="button" class="btn btn-primary text-center" style = "background-color: deepskyblue" onclick="refreshPage()">Restart</button>
+        </div>
+</div>
+</div>
+
+
+</body>
+<% include partials/script %>
+</html>

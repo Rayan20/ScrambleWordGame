@@ -23,10 +23,49 @@
     function refreshPage(){
         window.location.reload();
     }
+    function timer(){
+        alert('Times Up!');
+    }
+    function startTimer(){
+        var counter = 30;
+        setInterval(function(){
+            counter--;
+            if(counter > 0){
+                span = document.getElementById("count");
+                span.innerHTML = counter;
+            }
+            if (counter == 0){
+                alert('Times Up!');
+                clearInterval(counter);
+            }
+        },1000);
+    }
+    $("#startclock").click(function(){
+        startTimer();
+    });
 
 </script>
 <% include partials/menu %>
-
+<div class = "container-fluid text-center">
+    <button type="button" class="btn btn-primary text-center" style = "background-color: dodgerblue" onclick = "timer()">Timer</button>
+<!--    <div>-->
+<!--        <br>-->
+<!--        <span id="count">30</span> seconds-->
+<!--        <a href="#" id="startClock">Start Clock</a>-->
+<!--    </div>-->
+    <div>
+         <br>
+        <div class = "container-fluid pull-right">
+            <form action = "/signup" method = post id = "signup"></form>
+            <script>
+                let form = document.getElementById('submit');
+                document.forms;
+                document.forms[0];
+            </script>
+            <button type ="submit" class = "btn btn-primary" style = "background-color: dodgerblue">submit</button>
+        </div>
+    </div>
+</div>
 <div class="container-fluid text-center">
     <h3><%= page %></h3><br>
 

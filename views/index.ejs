@@ -20,6 +20,7 @@
     function scrambl() {
         document.getElementById("scram").innerHTML = "<font size=\"5\"<br><br><strong>Constants to be flipped: " + constants + "<br>Vowels to be flipped: " + vowels + "<br></font>";
     }
+
     function refreshPage(){
         window.location.reload();
     }
@@ -44,42 +45,71 @@
         startTimer();
     });
 
+
 </script>
 <% include partials/menu %>
 <div class = "container-fluid text-center">
-    <button type="button" class="btn btn-primary text-center" style = "background-color: dodgerblue" onclick = "timer()">Timer</button>
+    <button type="button" class="btn btn-primary btn-sm text-center" id = "higher-panel-link" style = "background-color: dodgerblue" onclick = "timer()">Timer</button>
 <!--    <div>-->
 <!--        <br>-->
 <!--        <span id="count">30</span> seconds-->
 <!--        <a href="#" id="startClock">Start Clock</a>-->
 <!--    </div>-->
     <div>
+        <a href = '/api/signup' type="button" class="btn btn-primary" id="left-panel-link" >Sign Up</a>
          <br>
         <div class = "container-fluid pull-right">
-            <form action = "/signup" method = post id = "signup"></form>
+            <form action = "/signup" method = "post" id = "signup">
+                <br>
+            <input type = "text" id = "firstname" placeholder="First Name">
+                <br>
+            <input type = "text" id = "lastname" placeholder="Last Name">
+                <br>
+                <input type = "text" id = "email" placeholder = "Email Address">
+                <br>
+            <input type = "submit" id = "return">
+            </form>
             <script>
-                let form = document.getElementById('submit');
+                let form = document.getElementById('return');
                 document.forms;
                 document.forms[0];
+                form.submit();
+                //maybe add an event listener
+
+                let form = document.getElementById('signup');
+                let firstname = form.elements['firstname'];
+                let lastname = form.elements['lastname'];
+                let email = form.elements['email'];
+
+                let first = firstname.value;
+                let last = lastname.value;
+                let emailAddress = email.value;
+
+                function error(input, message){
+                    input.className = 'error';
+                    const error = input.previousElementSibling;
+                    error.innerHTML = message;
+                    return false;
+                }
             </script>
-            <button type ="submit" class = "btn btn-primary" style = "background-color: dodgerblue">submit</button>
         </div>
     </div>
 </div>
 <div class="container-fluid text-center">
     <h3><%= page %></h3><br>
 
-    <div id="scram" style = "background-color: aquamarine">
-        <p><font size="5">Press The Button To Start Game</font></p>
+    <div ul class="nav navbar2 pull-right highest-panel-link2" id="scram" style = "background-color: aquamarine">
+        <p><font size="5">Press Scramble! To Start Game</font></p>
+
     </div>
     <div style = "background-color: aquamarine">
         <br>
     </div>
     <div style = "background-color: aquamarine">
-        <button type="button" class="btn btn-primary text-center" style = "background-color: tomato" onclick="scrambl()">Scramble!</button>
+        <button type="button" class="btn btn-primary btn-lg text-center" style = "background-color: tomato"  id = "center-panel-link" onclick="scrambl()">Scramble!</button>
         <div>
             <br>
-            <button type="button" class="btn btn-primary text-center" style = "background-color: deepskyblue" onclick="refreshPage()">Restart</button>
+            <button type="button" class="btn btn-primary btn-sm text-center" id = "lower-panel-link" style = "background-color: deepskyblue" onclick="refreshPage()">Restart</button>
         </div>
 </div>
 </div>
@@ -88,3 +118,4 @@
 </body>
 <% include partials/script %>
 </html>
+

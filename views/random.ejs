@@ -14,7 +14,7 @@
     var five_letter = Math.floor((Math.random() * 4) + 5);
     var six_letter = Math.floor((Math.random() * 5) + 6);
     var seven_plus = Math.floor((Math.random() * 6) + 7);
-
+    var bonus_letter = alphabet[Math.floor((Math.random()*24))];
 
     function scrambl() {
         document.getElementById("scram").innerHTML = "<font size=\"5\"<br><br><strong>Constants to be flipped: " + constants + "<br>Vowels to be flipped: " + vowels + "</strong>" +  "<br>Three-Letter Word Value: "+ three_letter + "<br>Four-Letter Word Value: " + four_letter + "<br>Five-Letter Word Value: " + five_letter + "<br>Six-Letter Word Value: " + six_letter +"</br>" + "Seven-Letter Plus Word Value: " + seven_plus + "<br></font>";
@@ -22,24 +22,92 @@
     function refreshPage(){
         window.location.reload();
     }
+    function timer(){
+        alert('Times Up!');
+    }
+    function startTimer(){
+        var counter = 30;
+        setInterval(function(){
+            counter--;
+            if(counter > 0){
+                span = document.getElementById("count");
+                span.innerHTML = counter;
+            }
+            if (counter == 0){
+                alert('Times Up!');
+                clearInterval(counter);
+            }
+        },1000);
+    }
+    $("#startclock").click(function(){
+        startTimer();
+    });
+
 
 </script>
 <% include partials/menu %>
+<div class = "container-fluid text-center">
+    <button type="button" class="btn btn-primary btn-sm text-center" id = "higher-panel-link" style = "background-color: dodgerblue" onclick = "timer()">Timer</button>
+    <!--    <div>-->
+    <!--        <br>-->
+    <!--        <span id="count">30</span> seconds-->
+    <!--        <a href="#" id="startClock">Start Clock</a>-->
+    <!--    </div>-->
+    <div>
+        <a href = '/api/signup' type="button" class="btn btn-primary" id="left-panel-link" >Sign Up</a>
+        <br>
+        <div class = "container-fluid pull-right">
+            <form action = "/signup" method = "post" id = "signup">
+                <br>
+                <input type = "text" id = "firstname" placeholder="First Name">
+                <br>
+                <input type = "text" id = "lastname" placeholder="Last Name">
+                <br>
+                <input type = "text" id = "email" placeholder = "Email Address">
+                <br>
+                <input type = "submit" id = "return">
+            </form>
+            <script>
+                let form = document.getElementById('return');
+                document.forms;
+                document.forms[0];
+                form.submit();
+                //maybe add an event listener
 
-<div class="container-fluid bg-3 text-center" style = "background-color: aquamarine">
+                let form = document.getElementById('signup');
+                let firstname = form.elements['firstname'];
+                let lastname = form.elements['lastname'];
+                let email = form.elements['email'];
+
+                let first = firstname.value;
+                let last = lastname.value;
+                let emailAddress = email.value;
+
+                function error(input, message){
+                    input.className = 'error';
+                    const error = input.previousElementSibling;
+                    error.innerHTML = message;
+                    return false;
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<div class="container-fluid text-center">
     <h3><%= page %></h3><br>
 
-    <div id="scram" style = "background-color: aquamarine">
-        <p><font size="5">Press The Button To Start Game</font></p>
+    <div ul class="nav navbar2 pull-right highest-panel-link" id="scram" style = "background-color: aquamarine">
+        <p><font size="5">Press Scramble! To Start Game</font></p>
+
     </div>
     <div style = "background-color: aquamarine">
         <br>
     </div>
     <div style = "background-color: aquamarine">
-        <button type="button" class="btn btn-primary text-center" style = "background-color: tomato" onclick="scrambl()">Scramble!</button>
+        <button type="button" class="btn btn-primary btn-lg text-center" style = "background-color: tomato"  id = "center-panel-link" onclick="scrambl()">Scramble!</button>
         <div>
             <br>
-            <button type="button" class="btn btn-primary text-center" style = "background-color: deepskyblue" onclick="refreshPage()">Restart</button>
+            <button type="button" class="btn btn-primary btn-sm text-center" id = "lower-panel-link" style = "background-color: deepskyblue" onclick="refreshPage()">Restart</button>
         </div>
     </div>
 </div>
@@ -48,3 +116,4 @@
 </body>
 <% include partials/script %>
 </html>
+

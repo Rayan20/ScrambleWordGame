@@ -15,6 +15,16 @@
       font-size: 12px;
       letter-spacing: 5px;
   }
+.navbar2 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: black
+}
   .navbar-nav  li a:hover {
       color: lightgreen !important;
   }
@@ -22,3 +32,48 @@
   .active>a {
     color: #1abc9c !important;;
   }
+
+.content {
+    position: relative;
+}
+#left-panel-link {
+    position: absolute;
+    top: 23px;
+    left: 580px;
+
+}
+
+#center-panel-link {
+    position: absolute;
+    bottom: 530px;
+    left: 650px;
+}
+
+#lower-panel-link{
+    position:absolute;
+    bottom: 489px;
+    left:650px
+}
+
+#higher-panel-link{
+    position:absolute;
+    bottom:489px;
+    right:642px;
+}
+
+.highest-panel-link{
+    position:absolute;
+    bottom:215px;
+    left: 510px;
+}
+
+.highest-panel-link2{
+    position:absolute;
+    bottom:385px;
+    left: 530px;
+}
+.highest-panel-link3{
+    position:absolute;
+    bottom:350px;
+    left: 525px;
+}

@@ -25,6 +25,11 @@
     letter-spacing: 2px;
     color: black
 }
+.navbar-brand{
+    position: absolute;
+    top:0px;
+    left: 1%;
+}
   .navbar-nav  li a:hover {
       color: lightgreen !important;
   }
@@ -39,7 +44,7 @@
 #left-panel-link {
     position: absolute;
     top: 23px;
-    left: 580px;
+    left: 460px;
 
 }
 
@@ -47,6 +52,11 @@
     position: absolute;
     bottom: 530px;
     left: 650px;
+}
+#center-panel-link3 {
+    position: absolute;
+    bottom: 530px;
+    left: 300px;
 }
 
 #lower-panel-link{
@@ -69,11 +79,59 @@
 
 .highest-panel-link2{
     position:absolute;
-    bottom:385px;
-    left: 530px;
+    top:80px;
+    left: 490px;
 }
 .highest-panel-link3{
     position:absolute;
-    bottom:350px;
-    left: 525px;
+    top:50%;
+    right: 50%;
+}
+
+.button-center{
+    position:absolute;
+    top: 30%;
+    right:47%;
+}
+
+.button-relative{
+    position: absolute;
+    top: 265px;
+    right: 30px;
+}
+
+.output{
+    position: absolute;
+    top:140px;
+    left:38px;
+    width: 500px;
+}
+
+.output2{
+    position: relative;
+    top:30px;
+    left:38px;
+    width: 500px;
+}
+
+.output3{
+    position: absolute;
+    top:120px;
+    left:65px;
+    width: 500px;
+}
+
+.hidden-button{
+    position: absolute;
+    top:230px;
+    right:0px;
+
+}
+
+.timer{
+    position: absolute;
+    top: 280px;
+    left:15px;
+    width:500px;
+    color: black;
 }

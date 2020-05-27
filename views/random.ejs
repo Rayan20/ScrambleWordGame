@@ -3,111 +3,116 @@
 <head>
     <% include partials/head %>
 </head>
-<body style = "background-color:aquamarine">
+<body style="background-color:aquamarine">
 <script>
-
-    var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    var constants = Math.floor((Math.random() * 10) + 5);
-    var vowels = Math.floor((Math.random() * 5) + 3);
-    var three_letter = Math.floor((Math.random() * 2) + 3);
-    var four_letter = Math.floor((Math.random() * 3) + 4);
-    var five_letter = Math.floor((Math.random() * 4) + 5);
-    var six_letter = Math.floor((Math.random() * 5) + 6);
-    var seven_plus = Math.floor((Math.random() * 6) + 7);
-    var bonus_letter = alphabet[Math.floor((Math.random()*24))];
-
     function scrambl() {
-        document.getElementById("scram").innerHTML = "<font size=\"5\"<br><br><strong>Constants to be flipped: " + constants + "<br>Vowels to be flipped: " + vowels + "</strong>" +  "<br>Three-Letter Word Value: "+ three_letter + "<br>Four-Letter Word Value: " + four_letter + "<br>Five-Letter Word Value: " + five_letter + "<br>Six-Letter Word Value: " + six_letter +"</br>" + "Seven-Letter Plus Word Value: " + seven_plus + "<br></font>";
+        var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+        var constants = Math.floor((Math.random() * 10) + 5);
+        var vowels = Math.floor((Math.random() * 5) + 3);
+        var three_letter = Math.floor((Math.random() * 2) + 3);
+        var four_letter = Math.floor((Math.random() * 3) + 4);
+        var five_letter = Math.floor((Math.random() * 4) + 5);
+        var six_letter = Math.floor((Math.random() * 5) + 6);
+        var seven_plus = Math.floor((Math.random() * 6) + 7);
+        var bonus_letter = alphabet[Math.floor((Math.random() * 24))];
+
+        document.getElementById("scram").innerHTML = "<span class = 'output2'><font size=\"5\"<strong>Constants to be flipped: " + constants + "<br>Vowels to be flipped: " + vowels + "</strong>" + "<br>Three-Letter Word Value: " + three_letter + "<br>Four-Letter Word Value: " + four_letter + "<br>Five-Letter Word Value: " + five_letter + "<br>Six-Letter Word Value: " + six_letter + "</br>" + "Seven-Letter Plus Word Value: " + seven_plus + "<br></font></span>";
+
+        document.getElementById("time").style.display = "block";
+        document.getElementById("shower").style.display = "none";
+        document.getElementById("hider").style.display = "block";
     }
-    function refreshPage(){
-        window.location.reload();
-    }
-    function timer(){
+
+
+    function timeUp() {
         alert('Times Up!');
     }
-    function startTimer(){
-        var counter = 30;
-        setInterval(function(){
-            counter--;
-            if(counter > 0){
-                span = document.getElementById("count");
-                span.innerHTML = counter;
+    var myTime;
+    function startTimer() {
+        myTime = setInterval(timeAction, 1000);
+        var counter = 31;
+
+
+        function timeAction() {
+            document.getElementById('timer').innerHTML = "<span class = 'timer'><font size=\"5\"><strong>Time Remaining: " + (--counter) + "</strong></font></span>";
+            if (counter == 0) {
+                clearInterval(myTime);
+                timeUp();
             }
-            if (counter == 0){
-                alert('Times Up!');
-                clearInterval(counter);
-            }
-        },1000);
+        }
     }
-    $("#startclock").click(function(){
-        startTimer();
-    });
+
+
+    var form = document.getElementById('return');
+    document.forms;
+    document.forms[0];
+    form.submit();
+    //maybe add an event listener
+
+    //let form = document.getElementById('signup');
+    let firstname = form.elements['firstname'];
+    let lastname = form.elements['lastname'];
+    let email = form.elements['email'];
+
+    let first = firstname.value;
+    let last = lastname.value;
+    let emailAddress = email.value;
+
+    function error(input, message) {
+        input.className = 'error';
+        const error = input.previousElementSibling;
+        error.innerHTML = message;
+        return false;
+    }
 
 
 </script>
 <% include partials/menu %>
-<div class = "container-fluid text-center">
-    <button type="button" class="btn btn-primary btn-sm text-center" id = "higher-panel-link" style = "background-color: dodgerblue" onclick = "timer()">Timer</button>
-    <!--    <div>-->
-    <!--        <br>-->
-    <!--        <span id="count">30</span> seconds-->
-    <!--        <a href="#" id="startClock">Start Clock</a>-->
-    <!--    </div>-->
+<div>
     <div>
-        <a href = '/api/signup' type="button" class="btn btn-primary" id="left-panel-link" >Sign Up</a>
+        <a href='/api/signup' type="button" class="btn btn-primary" id="left-panel-link">Sign Up</a>
         <br>
-        <div class = "container-fluid pull-right">
-            <form action = "/signup" method = "post" id = "signup">
+        <div class="container-fluid pull-right" style="display:none">
+            <form action="/signup" method="post" id="signup">
                 <br>
-                <input type = "text" id = "firstname" placeholder="First Name">
+                <input type="text" id="firstname" placeholder="First Name">
                 <br>
-                <input type = "text" id = "lastname" placeholder="Last Name">
+                <input type="text" id="lastname" placeholder="Last Name">
                 <br>
-                <input type = "text" id = "email" placeholder = "Email Address">
+                <input type="text" id="email" placeholder="Email Address">
                 <br>
-                <input type = "submit" id = "return">
+                <input type="submit" id="return">
             </form>
-            <script>
-                let form = document.getElementById('return');
-                document.forms;
-                document.forms[0];
-                form.submit();
-                //maybe add an event listener
 
-                let form = document.getElementById('signup');
-                let firstname = form.elements['firstname'];
-                let lastname = form.elements['lastname'];
-                let email = form.elements['email'];
-
-                let first = firstname.value;
-                let last = lastname.value;
-                let emailAddress = email.value;
-
-                function error(input, message){
-                    input.className = 'error';
-                    const error = input.previousElementSibling;
-                    error.innerHTML = message;
-                    return false;
-                }
-            </script>
         </div>
     </div>
 </div>
-<div class="container-fluid text-center">
+<div class="highest-panel-link2" id="scram">
+
+</div>
+<div class="container-fluid">
     <h3><%= page %></h3><br>
 
-    <div ul class="nav navbar2 pull-right highest-panel-link" id="scram" style = "background-color: aquamarine">
-        <p><font size="5">Press Scramble! To Start Game</font></p>
+    <div class="button-center" id="buttons">
 
-    </div>
-    <div style = "background-color: aquamarine">
-        <br>
-    </div>
-    <div style = "background-color: aquamarine">
-        <button type="button" class="btn btn-primary btn-lg text-center" style = "background-color: tomato"  id = "center-panel-link" onclick="scrambl()">Scramble!</button>
-        <div>
+        <div style="background-color: aquamarine">
+            <button type="button" class="btn btn-primary btn-lg" id="shower" style="background-color: tomato"
+                    onclick="scrambl()">Scramble!
+            </button>
+        </div>
+        <div class="hidden-button" style="background-color: aquamarine">
+            <button type="button" class="btn btn-primary btn-lg" id="hider"
+                    style="background-color: tomato; display:none" onclick="scrambl()">Scramble!
+            </button>
+        </div>
+        <div class="button-relative">
             <br>
-            <button type="button" class="btn btn-primary btn-sm text-center" id = "lower-panel-link" style = "background-color: deepskyblue" onclick="refreshPage()">Restart</button>
+            <button type="button" class="btn btn-primary btn-sm" id="time"
+                    style="background-color: dodgerblue; display:none" onclick="startTimer()">Timer
+            </button>
+        </div>
+        <div id="timer">
+            <br>
         </div>
     </div>
 </div>

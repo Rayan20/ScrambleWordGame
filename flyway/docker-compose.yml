@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    # restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - db-data-pg:/var/lib/pg
+#    healthcheck:
+#      test: "pg_isready -q -U postgres"
+#  flyway:
+#    image: boxfuse/flyway
+#    command: -url=jdbc:postgresql://db/web -schemas=public -user=root -password=password migrate baselineOnMigrate
+#    volumes:
+#      - ./flyway:/flyway/sql
+#    depends_on:
+#      - db
+volumes:
+    db-data-pg:
+networks:
+    db:

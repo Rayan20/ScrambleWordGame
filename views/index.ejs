@@ -41,6 +41,21 @@
             }
         }
     }
+    var hide = false;
+    function showSignup(){
+        document.getElementById('signup').style = "display: block";
+        hide = !hide;
+        document.getElementById('loginButton').style = "display:block";
+        if(hide) {
+            document.getElementById('signinButton').style = "display:none";
+        }
+    }
+    function showLogin(){
+        hide = !hide;
+        document.getElementById('signinButton').style = "display:block";
+        document.getElementById('loginButton').style = "display:none";
+        document.getElementById('signup').style = "display:none";
+    }
 
     var form = document.getElementById('return');
     document.forms;
@@ -68,17 +83,20 @@
 </script>
 <% include partials/menu %>
 <div>
-    <div>
-        <a href='/api/signup' type="button" class="btn btn-primary" id="left-panel-link">Sign Up</a>
+    <div class = "login" id = "login"><button type="button" class="btn btn-primary" id="loginButton" style = "display:none; width:76px" onclick = "showLogin()">Log In</button>
+    </div>
+    <div class = "singin" id = "signin">
+        <button type="button" style = "display:block; width:76px" class="btn btn-primary" id="signinButton" onclick = "showSignup()">Sign Up</button></div>
+    </div>
         <br>
-        <div class="container-fluid pull-right" style="display:none">
+        <div class="form" id = "signup" style="display:none">
             <form action="/signup" method="post" id="signup">
                 <br>
-                <input type="text" id="firstname" placeholder="First Name">
+                <input style = "height:50px" type = "text" id = "username" placeholder = "Username">
                 <br>
-                <input type="text" id="lastname" placeholder="Last Name">
+                <input style = "height:50px" type="text" id="password" placeholder="Password">
                 <br>
-                <input type="text" id="email" placeholder="Email Address">
+                <input style = "height:50px" type="text" id="email" placeholder="Email Address">
                 <br>
                 <input type="submit" id="return">
             </form>

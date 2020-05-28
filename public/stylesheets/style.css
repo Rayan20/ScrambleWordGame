@@ -135,3 +135,21 @@
     width:500px;
     color: black;
 }
+
+.form{
+    position: absolute;
+    top: 37px;
+    left: 458px;
+}
+
+.singin{
+    position:absolute;
+    top: 23px;
+    left: 460px;
+}
+
+.login{
+    position:absolute;
+    top: 23px;
+    left: 460px;
+}

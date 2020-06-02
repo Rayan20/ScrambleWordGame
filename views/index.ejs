@@ -33,10 +33,25 @@
 
 
     function timeUp() {
-        var playPromise = document.getElementById('sound').play();
-        if(playPromise !== undefined){
-            playPromise.then(alert('Times Up!'));
+        var soundUrl = document.getElementById('sound').src;
+        // if(playPromise !== undefined){
+        //     playPromise.then(alert('Times Up!'));
+        // }
+        function play(url) {
+            return new Promise(function(resolve, reject) { // return a promise
+                var audio = new Audio();                     // create audio wo/ src
+                audio.preload = "auto";                      // intend to play through
+                audio.autoplay = true;                       // autoplay when loaded
+                audio.onerror = reject;                      // on error, reject
+                audio.onended = resolve;                     // when done, resolve
+
+                audio.src = url
+            });
         }
+
+        play(soundUrl).then(function() {
+            alert("Times Up!");
+        })
     }
 
 

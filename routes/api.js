@@ -9,7 +9,7 @@ router.get('/random', function(req, res, next) {
         res.render('login', {loginMessage:''});
     }
     else{
-        res.render('index', {page:'', menuId:'random',Username:mycookie});
+        res.render('random', {page:'', menuId:'random',Username:mycookie});
     }
 });
 router.get('/bonus', function(req, res, next) {
@@ -18,7 +18,7 @@ router.get('/bonus', function(req, res, next) {
         res.render('login', {loginMessage:''});
     }
     else{
-        res.render('index', {page:'', menuId:'random',Username:mycookie});
+        res.render('bonus', {page:'', menuId:'random',Username:mycookie});
     }
 });
 router.get('/clear_cookie', function(req, res, next) {

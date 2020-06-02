@@ -21,18 +21,19 @@
         document.getElementById("time").style.display = "block";
         document.getElementById("shower").style.display = "none";
         document.getElementById("hider").style.display = "block";
-
     }
 
 
     function timeUp() {
-        alert('Times Up!');
+        document.getElementById('sound').play().then(alert('Times Up!'));
+        //alert('Times Up!');
     }
 
     var myTime;
+
     function startTimer() {
         myTime = setInterval(timeAction, 1000);
-        var counter = 31;
+        var counter = 61;
 
 
         function timeAction() {
@@ -44,68 +45,57 @@
         }
     }
 
+    var hide = false;
 
-    var form = document.getElementById('return');
-    document.forms;
-    document.forms[0];
-    form.submit();
-    //maybe add an event listener
+    // function showSignup() {
+    //     document.getElementById('signup').style = "display: block";
+    //     hide = !hide;
+    //     document.getElementById('loginButton').style = "display:block";
+    //     if (hide) {
+    //         document.getElementById('signinButton').style = "display:none";
+    //     }
+    //}
 
-    //let form = document.getElementById('signup');
-    let firstname = form.elements['firstname'];
-    let lastname = form.elements['lastname'];
-    let email = form.elements['email'];
+    // function showLogin() {
+    //     hide = !hide;
+    //     document.getElementById('signinButton').style = "display:block";
+    //     document.getElementById('loginButton').style = "display:none";
+    //     document.getElementById('signup').style = "display:none";
+    // }
 
-    let first = firstname.value;
-    let last = lastname.value;
-    let emailAddress = email.value;
-
-    function error(input, message) {
-        input.className = 'error';
-        const error = input.previousElementSibling;
-        error.innerHTML = message;
-        return false;
-    }
 
 
 </script>
 <% include partials/menu %>
+<audio id="sound" src="/public/audio/66136__aji__ding30603-spedup.wav" type="audio/wav" preload="auto"></audio>
 <div>
-    <div>
-        <a href='/api/signup' type="button" class="btn btn-primary" id="left-panel-link">Sign Up</a>
-        <br>
-        <div class="container-fluid pull-right" style="display:none">
-            <form action="/signup" method="post" id="signup">
-                <br>
-                <input type="text" id="firstname" placeholder="First Name">
-                <br>
-                <input type="text" id="lastname" placeholder="Last Name">
-                <br>
-                <input type="text" id="email" placeholder="Email Address">
-                <br>
-                <input type="submit" id="return">
-            </form>
-
-        </div>
+    <div class="login" id="">
+        <a href = "/api/clear_cookie" ><button type="button" class="btn btn-primary" ><strong>Sign Out</strong>
+            </button>  </a>
     </div>
 </div>
-<div class = "highest-panel-link2" id="scram">
+<div>
+    <br>
+</div>
+<div class="highest-panel-link2" id="scram">
 
 </div>
 <div class="container-fluid">
     <h3><%= page %></h3><br>
 
-    <div class = "button-center" id="buttons">
+    <div class="button-center" id="buttons">
 
         <div style="background-color: aquamarine">
-            <button type="button" class="btn btn-primary btn-lg" id = "shower" style="background-color: tomato" onclick="scrambl()">Scramble!
+            <button type="button" class="btn btn-primary btn-lg" id="shower" style="background-color: tomato"
+                    onclick="scrambl()">Scramble!
             </button>
         </div>
-        <div class = "hidden-button" style="background-color: aquamarine">
-            <button type="button" class="btn btn-primary btn-lg" id = "hider" style="background-color: tomato; display:none" onclick="scrambl()">Scramble!
+        <div class="hidden-button" style="background-color: aquamarine">
+            <button type="button" class="btn btn-primary btn-lg" id="hider"
+                    style="background-color: tomato; display:none" onclick="scrambl()">Scramble!
             </button>
         </div>
-        <div class = "button-relative">
+        <div class="button-relative">
             <br>
             <button type="button" class="btn btn-primary btn-sm" id="time"
                     style="background-color: dodgerblue; display:none" onclick="startTimer()">Timer
@@ -114,8 +104,8 @@
         <div id="timer">
             <br>
         </div>
-        </div>
     </div>
+</div>
 </div>
 
 

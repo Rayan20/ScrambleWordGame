@@ -1,91 +1,78 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css">
-    <link rel="stylesheet" href="/vendors/formvalidation/dist/css/formValidation.min.css">
-    <% include partials/head %>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css"/>
 </head>
-<body>
-<form id="demoForm" method="post">
-    <div class="cf mb2">
-        <br>
-    <div class="cf mb2">
-        <div class="fl w-100">
-            <div class="fl w-25 pa2">Username</div>
-            <div class="fl w-50">
-                <input type="text" name="username" class="input-reset ba b--black-20 pa2 mb2 db w-100" />
-            </div>
+<body style="background-color:aquamarine">
+<h1><div class = "error" id="signupMSG" style = "color:red"><font size = "3"><%- signupMessage%></font></div></h1>
+        <div id="register" class="signup-center">
+            <form  action="/login/registerAccount" onSubmit = "return checkPassword(this)" method="post" autocomplete="on">
+                <h2> Sign up </h2>
+                <p>
+                    <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="" />
+                </p>
+                <p>
+                    <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
+                    <input id="emailsignup" name="email" required="required" type="email" placeholder=""/>
+                </p>
+                <p>
+                    <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+                    <input id="passwordsignup" name="password" required="required" type="password" placeholder=""/>
+                </p>
+                <p>
+                    <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+                    <input id="passwordsignup_confirm" name="password2" required="required" type="password" placeholder=""/>
+                </p>
+                <p class="signin button">
+                    <input type="submit" value="Sign up"/>
+                </p>
+                <p class="change_link">
+                    Already a member?
+                    <a href="/login" class="to_register"> Go and log in </a>
+                </p>
+                <p class = "change_link">
+                    Be a guest
+                    <a href = "/login/guest" class = "to_register">Try it out</a>
+                </p>
+            </form>
         </div>
-    </div>
-    <div class="cf mb2">
-        <div class="fl w-100">
-            <div class="fl w-25 pa2">Email</div>
-            <div class="fl w-50">
-                <input type="text" name="email" class="input-reset ba b--black-20 pa2 mb2 db w-100" />
-            </div>
-        </div>
-    </div>
-    <div class="cf mb2">
-        <div class="fl w-100">
-            <div class="fl w-25 pa2"></div>
-            <a class="fl w-50">
-                <a href = "/" type="submit" class="ba b--black-20 bg-blue white ph3 pv2 br2">Submit
-            </a>
-            </a>
-        </div>
-    </div>
-    </div>
-</form>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.3/es6-shim.min.js"></script>
-<script src="/vendors/formvalidation/dist/js/FormValidation.min.js"></script>
-<script src="/vendors/formvalidation/dist/js/plugins/Tachyons.min.js"></script>
+    </div>
+</div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function(e) {
+    // Function to check Whether both passwords
+    // is same or not.
+    function checkPassword(form) {
+        password1 = form.password.value;
+        password2 = form.password2.value;
 
-        const form = document.getElementById('demoForm');
-        FormValidation.formValidation(form, {
-            fields: {
-                username: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The username is required'
-                        },
-                        stringLength: {
-                            min: 6,
-                            max: 30,
-                            message: 'The username must be more than 6 and less than 30 characters long'
-                        },
-                        regexp: {
-                            regexp: /^[a-zA-Z0-9_]+$/,
-                            message: 'The username can only consist of alphabetical, number and underscore'
-                        }
-                    }
-                },
-                email: {
-                    validators: {
-                        notEmpty: {
-                            message: 'The email address is required'
-                        },
-                        emailAddress: {
-                            message: 'The input is not a valid email address'
-                        }
-                    }
-                },
-                plugins: {
-                    trigger: new FormValidation.plugins.Trigger(),
-                    tachyons: new FormValidation.plugins.Tachyons(),
-                    submitButton: new FormValidation.plugins.SubmitButton(),
-                    icon: new FormValidation.plugins.Icon({
-                        valid: 'fa fa-check',
-                        invalid: 'fa fa-times',
-                        validating: 'fa fa-refresh'
-                    }),
-                }
-            }
-        });
-    });
+        // If password not entered
+        if (password1 === '') {
+            alert("Please enter Password");
+            return false;
+        }
+
+        // If confirm password not entered
+        else if (password2 === '') {
+            alert("Please enter confirm password");
+            return false;
+        }
+
+        // If Not same return False.
+        else if (password1 !== password2) {
+            alert ("\nPassword did not match: Please try again...")
+            return false;
+        }
+
+        // If same return True.
+        else{
+            return true;
+        }
+    }
 </script>
 </body>
+
 </html>
+

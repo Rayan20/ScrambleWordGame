@@ -79,8 +79,8 @@
 
 .highest-panel-link2{
     position:absolute;
-    top:80px;
-    left: 490px;
+    top:30%;
+    left: 35%;
 }
 .highest-panel-link3{
     position:absolute;
@@ -90,7 +90,13 @@
 
 .button-center{
     position:absolute;
-    top: 30%;
+    top: 31%;
+    right:47%;
+}
+
+.button-center1{
+    position:absolute;
+    top: 31.75%;
     right:47%;
 }
 
@@ -102,24 +108,24 @@
 
 .output{
     position: absolute;
-    top:140px;
+    top:2%;
     left:38px;
     width: 500px;
 }
 
-.output2{
-    position: relative;
-    top:30px;
-    left:38px;
-    width: 500px;
-}
+/*.output2{*/
+/*    position: relative;*/
+/*    top:30px;*/
+/*    left:38px;*/
+/*    width: 500px;*/
+/*}*/
 
-.output3{
-    position: absolute;
-    top:120px;
-    left:65px;
-    width: 500px;
-}
+/*.output3{*/
+/*    position: absolute;*/
+/*    top:120px;*/
+/*    left:65px;*/
+/*    width: 500px;*/
+/*}*/
 
 .hidden-button{
     position: absolute;
@@ -150,7 +156,40 @@
 
 .login{
     position:absolute;
-    top: 23px;
-    left: 460px;
+    top:3.3%;
+    left: 32%;
+}
+
+.login-center{
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 150%;
+}
+
+.error{
+    position:absolute;
+    top:4%;
+    left:30%;
+    width:100%;
+}
+
+.signup-center{
+    position:absolute;
+    top:15%;
+    left:37%;
+    width:150%
+}
+
+.hidden-button2{
+    position:absolute;
+    top:250px;
+    left:200px;
+}
+
+.button-center1{
+    position:absolute;
+    left:43%;
+    top:76%;
 }
 

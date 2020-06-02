@@ -2,21 +2,24 @@ var express = require('express');
 var router = express.Router();
 const loginController = require('../controller/loginController');
 
-router.get('/', function(req, res, next) {
-    res.render('login', {loginMessage:''});
+router.get('/', function (req, res, next) {
+    res.render('login', {loginMessage: ' '});
 });
-router.get('/findAccount/:username', function(req, res, next) {
+router.get('/guest', function (req,res,next){
+    var oneHour = 3600 * 1000; //1 HOUR
+    res.cookie(ScrambeWordGameCookie, "guest", {maxAge: oneHour, httpOnly: false});
+    res.redirect('/home')
+});
+router.get('/findAccount/:username', function (req, res, next) {
     var username = req.params.username;
     loginController.queryAccountByUsername(username, function (error, result) {
-        if (error){
+        if (error) {
             res.render('error');
-        }
-        else{
+        } else {
             res.status(200);
-            if (!result){
-                res.send('no account found for '+ username);
-            }
-            else {
+            if (!result) {
+                res.send('no account found for ' + username);
+            } else {
                 res.redirect('/home');
                 //res.render('index');
             }
@@ -24,44 +27,70 @@ router.get('/findAccount/:username', function(req, res, next) {
     });
     //res.render('bonus', {page:'', menuId:'bonus'});
 });
-router.post('/registerAccount', function(req, res, next) {
+router.post('/registerAccount', function (req, res, next) {
     var accountForm = req.body;
-    loginController.registerAccount(accountForm, function (error, result) {
-        if (error){
-            res.render('login', {loginMessage:'Encountered an error during registration: '+ error});
-        }
-        else{
-            if (!result || result.rows.length<1){
-                res.render('login', {loginMessage:'Registration failed : '+ error});
+    var username = accountForm.username;
+    loginController.queryAccountByUsername(username, function (error, queryResult) {
+        if (error) {
+            res.render('signup', {signupMessage: 'Encountered an internal error'});
+        } else {
+            res.status(200);
+            if (!queryResult || queryResult.rows.length < 1) {
+                loginController.registerAccount(accountForm, function (error1, result) {
+                    if (error1) {
+                        console.log(error1);
+                        res.render('login', {loginMessage: 'Encountered an error during registration'});
+                    } else {
+                        if (!result || result.rows.length < 1) {
+                            res.render('login', {loginMessage: 'Registration failed : ' + error});
+                        } else {
+                            res.render('login', {loginMessage: 'Registration is successful. Please login.'});
+                        }
+                    }
 
+                })
             }
-            else {
-                res.render('login', {loginMessage:'Registration is sucessful. Please login.'});
+            else{
+                res.render('signup', {signupMessage: 'Username already exists'});
             }
         }
-    });
-    //res.render('bonus', {page:'', menuId:'bonus'});
+    })
 });
-router.post('/userLogin', function(req, res, next) {
+
+// loginController.registerAccount(accountForm, function (error, result) {
+//     if (error) {
+//         console.log(error);
+//         res.render('login', {loginMessage: 'Encountered an error during registration'});
+//     } else {
+//         if (!result || result.rows.length < 1) {
+//             res.render('login', {loginMessage: 'Registration failed : ' + error});
+//
+//         } else {
+//             res.render('login', {loginMessage: 'Registration is sucessful. Please login.'});
+//         }
+//     }
+// });
+
+router.get('/signupForm', function (req, res, next) {
+    var accountForm = req.body;
+    res.render('signup', {signupMessage: ''});
+});
+router.post('/userLogin', function (req, res, next) {
     var loginForm = req.body;
     loginController.login(loginForm.username, loginForm.password, function (error, result) {
-        if (error){
-            res.render('login', {loginMessage:'Encountered an error during login:'+ error});
-        }
-        else{
-            if (!result){
-                res.render('login', {loginMessage:'Incorrect username or password. Please try again or register.'});
+        if (error) {
+            res.render('login', {loginMessage: 'Encountered an error during login:' + error});
+        } else {
+            if (!result) {
+                res.render('login', {loginMessage: 'Incorrect username or password. Please try again or register.'});
 
-            }
-            else {
-                if ( req.body.loginkeeping )
-                {
+            } else {
+                if (req.body.loginkeeping) {
                     var oneWeek = 7 * 24 * 3600 * 1000; //1 weeks
-                    res.cookie(ScrambeWordGameCookie, loginForm.username,{maxAge: oneWeek, httpOnly: true });
-                }
-                else{
+                    res.cookie(ScrambeWordGameCookie, loginForm.username, {maxAge: oneWeek, httpOnly: false});
+                } else {
                     var oneHour = 3600 * 1000; //1 HOUR
-                    res.cookie(ScrambeWordGameCookie, loginForm.username,{maxAge: oneHour, httpOnly: true });
+                    res.cookie(ScrambeWordGameCookie, loginForm.username, {maxAge: oneHour, httpOnly: false});
                 }
 
                 res.redirect('/home');

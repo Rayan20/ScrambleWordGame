@@ -4,6 +4,7 @@
     <% include partials/head %>
 </head>
 <body style="background-color:aquamarine">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     function scrambl() {
         var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -15,10 +16,20 @@
         var six_letter = Math.floor((Math.random() * 5) + 6);
         var seven_plus = Math.floor((Math.random() * 6) + 7);
         var bonus_letter = alphabet[Math.floor((Math.random() * 24))];
-        document.getElementById("scram").innerHTML = "<span class = 'output'><font size=\"5\"<strong>Constants to be flipped: " + constants + "<br>Vowels to be flipped: " + vowels + "</strong></font></span>";
+        document.getElementById("scram").innerHTML = "<div class = 'output'><font size=\"5\"<strong>Constants to be flipped: " + constants + "<br>Vowels to be flipped: " + vowels + "</strong></font></div>";
+
         document.getElementById("time").style.display = "block";
         document.getElementById("shower").style.display = "none";
         document.getElementById("hider").style.display = "block";
+    }
+
+    function getCookie(name) {
+        let cookie = {};
+        document.cookie.split(';').forEach(function(el) {
+            let [k,v] = el.split('=');
+            cookie[k.trim()] = v;
+        })
+        return cookie[name];
     }
 
 
@@ -31,7 +42,7 @@
 
     function startTimer() {
         myTime = setInterval(timeAction, 1000);
-        var counter = 31;
+        var counter = 61;
 
 
         function timeAction() {
@@ -43,77 +54,37 @@
         }
     }
 
-    var hide = false;
+    // function showSignup() {
+    //     document.getElementById('signup').style = "display: block";
+    //     hide = !hide;
+    //     document.getElementById('loginButton').style = "display:block";
+    //     if (hide) {
+    //         document.getElementById('signinButton').style = "display:none";
+    //     }
+    //}
 
-    function showSignup() {
-        document.getElementById('signup').style = "display: block";
-        hide = !hide;
-        document.getElementById('loginButton').style = "display:block";
-        if (hide) {
-            document.getElementById('signinButton').style = "display:none";
-        }
-    }
-
-    function showLogin() {
-        hide = !hide;
-        document.getElementById('signinButton').style = "display:block";
-        document.getElementById('loginButton').style = "display:none";
-        document.getElementById('signup').style = "display:none";
-    }
-
-    var form = document.getElementById('return');
-    document.forms;
-    document.forms[0];
-    form.submit();
-    //maybe add an event listener
-
-    //let form = document.getElementById('signup');
-    let firstname = form.elements['firstname'];
-    let lastname = form.elements['lastname'];
-    let email = form.elements['email'];
-
-    let first = firstname.value;
-    let last = lastname.value;
-    let emailAddress = email.value;
-
-    function error(input, message) {
-        input.className = 'error';
-        const error = input.previousElementSibling;
-        error.innerHTML = message;
-        return false;
-    }
+    // function showLogin() {
+    //     hide = !hide;
+    //     document.getElementById('signinButton').style = "display:block";
+    //     document.getElementById('loginButton').style = "display:none";
+    //     document.getElementById('signup').style = "display:none";
+    // }
 
 
 </script>
 <% include partials/menu %>
 <audio id="sound" src="/public/audio/66136__aji__ding30603-spedup.wav" type="audio/wav" preload="auto"></audio>
 <div>
-    <div class="login" id="login">
-        <button type="button" class="btn btn-primary" id="loginButton" style="display:none; width:76px"
-                onclick="showLogin()">Log In
-        </button>
+    <div class="login" id="">
+        <a href="/api/clear_cookie">
+            <button type="button" class="btn btn-primary"><strong>Sign Out</strong>
+            </button>
+        </a>
     </div>
-    <div class="singin" id="signin">
-        <button type="button" style="display:block; width:76px" class="btn btn-primary" id="signinButton"
-                onclick="showSignup()">Sign Up
-        </button>
-    </div>
-</div>
-<br>
-<div class="form" id="signup" style="display:none">
-    <form action="/signup" method="post" id="signup">
-        <br>
-        <input style="height:50px" type="text" id="username" placeholder="Username">
-        <br>
-        <input style="height:50px" type="text" id="password" placeholder="Password">
-        <br>
-        <input style="height:50px" type="text" id="email" placeholder="Email Address">
-        <br>
-        <input type="submit" id="return">
-    </form>
 
 </div>
-</div>
+<div>
+    <br>
 </div>
 <div class="highest-panel-link2" id="scram">
 

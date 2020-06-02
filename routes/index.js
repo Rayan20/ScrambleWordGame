@@ -6,10 +6,10 @@ router.get('/', function(req, res, next) {
   //res.render('home');
     var mycookie = req.cookies[ScrambeWordGameCookie];
     if(!mycookie){
-        res.render('login', {errorMessage:'You have not signed in yet. Please sign in to play the game.'});
+        res.render('login', {loginMessage:''});
     }
     else{
-        res.render('index', {page:'', menuId:'random'});
+        res.render('index', {page:'', menuId:'random',Username:mycookie});
     }
 });
 

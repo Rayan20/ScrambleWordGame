@@ -46,44 +46,22 @@
         }
     }
 
-    var hide = false;
-
-    // function showSignup() {
-    //     document.getElementById('signup').style = "display: block";
-    //     hide = !hide;
-    //     document.getElementById('loginButton').style = "display:block";
-    //     if (hide) {
-    //         document.getElementById('signinButton').style = "display:none";
-    //     }
-    //}
-
-    // function showLogin() {
-    //     hide = !hide;
-    //     document.getElementById('signinButton').style = "display:block";
-    //     document.getElementById('loginButton').style = "display:none";
-    //     document.getElementById('signup').style = "display:none";
-    // }
-
-
 </script>
 <% include partials/menu %>
 <audio id="sound" src="/public/audio/66136__aji__ding30603-spedup.wav" type="audio/wav" preload="auto"></audio>
 <div class="container-fluid">
-    <div class="login" id="">
-        <a href="/api/clear_cookie">
-            <button type="button" class="btn btn-primary"><strong>Sign Out</strong>
-            </button>
-        </a>
-    </div>
     <div class = "button-center1" style="background-color: aquamarine">
         <button type="button" class="btn btn-primary btn-lg" id="hider"
                 style="background-color: tomato; display:none" onclick="scrambl()">Scramble!
         </button>
-        <button type="button" class="btn btn-primary btn-sm" id="time"
-                style="background-color: dodgerblue; display:none" onclick="startTimer()">Timer
-        </button>
+        <div class = "button-center2">
+            <br>
+            <button type="button" class="btn btn-primary btn-sm" id="time"
+                    style="background-color: dodgerblue; display:none" onclick="startTimer()">Timer
+            </button>
+        </div>
     </div>
-    <div class="highest-panel-link2" id="scram" style="height:400px;width:1000px">
+    <div class="highest-panel-link2" id="scram" style="height:300px;width:1000px">
 
     </div>
     <!--        <h3><%= page %></h3><br>-->

@@ -24,22 +24,28 @@
         document.getElementById("hider").style.display = "block";
     }
 
-
-    function timeUp() {
-        document.getElementById('sound').play().then(alert('Times Up!'));
-        //alert('Times Up!');
+    function sleeper(ms) {
+        return function(x) {
+            return new Promise(resolve => setTimeout(() => resolve(x), ms));
+        };
     }
-
+    function timeUp() {
+        var playPromise = document.getElementById('sound').play();
+        if(playPromise !== undefined){
+            playPromise.then(alert('Times Up!'));
+        }
+    }
     var myTime;
-
     function startTimer() {
         myTime = setInterval(timeAction, 1000);
-        var counter = 61;
+        var counter = 16;
+        document.getElementById("time").disabled = true;
+        setTimeout(function(){document.getElementById("time").disabled = false;},16000);
 
 
         function timeAction() {
             document.getElementById('timer').innerHTML = "<span class = 'timer'><font size=\"5\"><strong>Time Remaining: " + (--counter) + "</strong></font></span>";
-            if (counter == 0) {
+            if (counter <= 0) {
                 clearInterval(myTime);
                 timeUp();
             }

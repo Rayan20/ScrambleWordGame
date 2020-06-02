@@ -4,7 +4,6 @@
     <% include partials/head %>
 </head>
 <body style="background-color:aquamarine">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     function scrambl() {
         var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -34,15 +33,19 @@
 
 
     function timeUp() {
-        document.getElementById('sound').play().then(alert('Times Up!'));
-        //alert('Times Up!');
+        var playPromise = document.getElementById('sound').play();
+        if(playPromise !== undefined){
+            playPromise.then(alert('Times Up!'));
+        }
     }
 
     var myTime;
 
     function startTimer() {
         myTime = setInterval(timeAction, 1000);
-        var counter = 61;
+        var counter = 6;
+        document.getElementById("time").disabled = true;
+        setTimeout(function(){document.getElementById("time").disabled = false;},6000);
 
 
         function timeAction() {

@@ -25,8 +25,10 @@
 
 
     function timeUp() {
-        document.getElementById('sound').play().then(alert('Times Up!'));
-        //alert('Times Up!');
+        var playPromise = document.getElementById('sound').play();
+        if(playPromise !== undefined){
+            playPromise.then(alert('Times Up!'));
+        }
     }
 
     var myTime;
@@ -34,7 +36,8 @@
     function startTimer() {
         myTime = setInterval(timeAction, 1000);
         var counter = 61;
-
+        document.getElementById("time").disabled = true;
+        setTimeout(function(){document.getElementById("time").disabled = false;},61000);
 
         function timeAction() {
             document.getElementById('timer').innerHTML = "<span class = 'timer'><font size=\"5\"><strong>Time Remaining: " + (--counter) + "</strong></font></span>";

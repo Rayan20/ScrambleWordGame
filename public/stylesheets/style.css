@@ -197,3 +197,14 @@
     position:relative;
     left:23%;
 }
+
+.body{
+    position:absolute;
+    top:15%;
+    height:100%;
+    width:100%;
+}
+
+h3 {
+    text-decoration: underline;
+}

@@ -10,5 +10,5 @@ This website uses a Progres database to store login/signup credentials. Once log
 * Tune to url: ``` http://localhost:3000 ```
 
 ## Screenshot
-<img src="public/img/HomeScreenshot.png">
+<img src="public/img/HomePage1.png">
 

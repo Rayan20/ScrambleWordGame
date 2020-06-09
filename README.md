@@ -8,7 +8,7 @@ This website uses a Progres database to store login/signup credentials. Once log
 * Install dependencies using [npm](https://www.npmjs.com/) javascript package manager: ``` npm install ```
 * Start node server with [nodemon](https://nodemon.io/): ``` nodemon start ```
 * Tune to url: ``` http://localhost:3000 ```
-* Server hosting was done through Heroku.
+* Server hosting was done through Heroku
 
 ## Screenshot
 <img src="public/img/HomePage1.png">

@@ -4,36 +4,37 @@
     <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css"/>
 </head>
 <body style="background-color:aquamarine">
-<h1><div class = "error" id="loginMsg" style = "color:red"><font size = "3"><%- loginMessage%></font></div></h1>
-<div class = "login-center" id="container_login" >
+<h1>
+    <div class="error" id="loginMsg" style="color:red"><font size="3"><%- loginMessage %></font></div>
+</h1>
+<div class="login-center" id="container_login">
     <a class="hiddenanchor" id="tologin"></a>
     <div id="wrapper">
-        <div class = "login-center" id="login">
-            <form  action="/login/userLogin" method="post" autocomplete="on">
+        <div class="login-center" id="login">
+            <form action="/login/userLogin" method="post" autocomplete="on">
                 <h2>Log in</h2>
                 <p>
-                    <label for="username" class="uname" data-icon="u" > Your email or username </label>
+                    <label for="username" class="uname" data-icon="u"> Your email or username </label>
                     <input id="username" name="username" required="required" type="text" placeholder=""/>
                 </p>
-
                 <p>
                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                    <input id="password" name="password" required="required" type="password" placeholder="" />
+                    <input id="password" name="password" required="required" type="password" placeholder=""/>
                 </p>
                 <p class="keeplogin">
-                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" />
+                    <input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping"/>
                     <label for="loginkeeping">Keep me logged in</label>
                 </p>
                 <p class="">
-                    <input type="submit" value="Login" />
+                    <input type="submit" value="Login"/>
                 </p>
                 <p class="change_link">
                     Not a member yet?
                     <a href="/login/signupForm" class="to_register">Join us</a>
                 </p>
-                <p class = "change_link">
+                <p class="change_link">
                     Be a guest
-                    <a href = "/login/guest">Check it out</a>
+                    <a href="/login/guest">Check it out</a>
                 </p>
             </form>
         </div>
@@ -42,8 +43,7 @@
 </div>
 
 <script>
-    // Function to check Whether both passwords
-    // is same or not.
+    // Function to check Whether both passwords is same or not.
     function checkPassword(form) {
         password1 = form.password.value;
         password2 = form.password2.value;
@@ -62,12 +62,12 @@
 
         // If Not same return False.
         else if (password1 !== password2) {
-            alert ("\nPassword did not match: Please try again...")
+            alert("\nPassword did not match: Please try again...")
             return false;
         }
 
         // If same return True.
-        else{
+        else {
             return true;
         }
     }

@@ -5,7 +5,7 @@ const loginController = require('../controller/loginController');
 router.get('/', function (req, res, next) {
     res.render('login', {loginMessage: ' '});
 });
-router.get('/guest', function (req,res,next){
+router.get('/guest', function (req, res, next) {
     var oneHour = 3600 * 1000; //1 HOUR
     res.cookie(ScrambeWordGameCookie, "guest", {maxAge: oneHour, httpOnly: false});
     res.redirect('/home')
@@ -21,11 +21,9 @@ router.get('/findAccount/:username', function (req, res, next) {
                 res.send('no account found for ' + username);
             } else {
                 res.redirect('/home');
-                //res.render('index');
             }
         }
     });
-    //res.render('bonus', {page:'', menuId:'bonus'});
 });
 router.post('/registerAccount', function (req, res, next) {
     var accountForm = req.body;
@@ -49,27 +47,12 @@ router.post('/registerAccount', function (req, res, next) {
                     }
 
                 })
-            }
-            else{
+            } else {
                 res.render('signup', {signupMessage: 'Username already exists'});
             }
         }
     })
 });
-
-// loginController.registerAccount(accountForm, function (error, result) {
-//     if (error) {
-//         console.log(error);
-//         res.render('login', {loginMessage: 'Encountered an error during registration'});
-//     } else {
-//         if (!result || result.rows.length < 1) {
-//             res.render('login', {loginMessage: 'Registration failed : ' + error});
-//
-//         } else {
-//             res.render('login', {loginMessage: 'Registration is sucessful. Please login.'});
-//         }
-//     }
-// });
 
 router.get('/signupForm', function (req, res, next) {
     var accountForm = req.body;

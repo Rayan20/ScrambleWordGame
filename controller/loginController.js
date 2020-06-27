@@ -78,4 +78,4 @@ exports.registerAccount = function (registration, callback) {
         })
     })
 
-}
+};

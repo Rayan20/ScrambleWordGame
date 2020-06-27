@@ -1,20 +1,23 @@
 .bg-3 {
-      background-color: #1abc9c;
-      color: black;
-  }
-  .container-fluid {
-      padding-top: 20px;
-      padding-bottom: 1px;
-  }
-  .navbar {
-      padding-top: 15px;
-      padding-bottom: 15px;
-      border: 0;
-      border-radius: 0;
-      margin-bottom: 0;
-      font-size: 12px;
-      letter-spacing: 5px;
-  }
+    background-color: #1abc9c;
+    color: black;
+}
+
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 1px;
+}
+
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
 .navbar2 {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -25,22 +28,25 @@
     letter-spacing: 2px;
     color: black
 }
-.navbar-brand{
+
+.navbar-brand {
     position: absolute;
-    top:0px;
+    top: 0px;
     left: 1%;
 }
-  .navbar-nav  li a:hover {
-      color: lightgreen !important;
-  }
 
-  .active>a {
+.navbar-nav li a:hover {
+    color: lightgreen !important;
+}
+
+.active > a {
     color: #1abc9c !important;;
-  }
+}
 
 .content {
     position: relative;
 }
+
 #left-panel-link {
     position: absolute;
     top: 23px;
@@ -53,63 +59,65 @@
     bottom: 530px;
     left: 650px;
 }
+
 #center-panel-link3 {
     position: absolute;
     bottom: 530px;
     left: 300px;
 }
 
-#lower-panel-link{
-    position:absolute;
+#lower-panel-link {
+    position: absolute;
     bottom: 489px;
-    left:650px
+    left: 650px
 }
 
-#higher-panel-link{
-    position:absolute;
-    bottom:489px;
-    right:642px;
+#higher-panel-link {
+    position: absolute;
+    bottom: 489px;
+    right: 642px;
 }
 
-.highest-panel-link{
-    position:absolute;
-    bottom:215px;
+.highest-panel-link {
+    position: absolute;
+    bottom: 215px;
     left: 510px;
 }
 
-.highest-panel-link2{
-    position:absolute;
-    top:30%;
+.highest-panel-link2 {
+    position: absolute;
+    top: 30%;
     left: 35%;
 }
-.highest-panel-link3{
-    position:absolute;
-    top:50%;
+
+.highest-panel-link3 {
+    position: absolute;
+    top: 50%;
     right: 50%;
 }
 
-.button-center{
-    position:absolute;
+.button-center {
+    position: absolute;
     top: 31%;
-    right:47%;
+    right: 47%;
 }
 
-.button-center1{
-    position:absolute;
+.button-center1 {
+    position: absolute;
     top: 31.75%;
-    right:47%;
+    right: 47%;
 }
 
-.button-relative{
+.button-relative {
     position: absolute;
     top: 265px;
     right: 30px;
 }
 
-.output{
+.output {
     position: absolute;
-    top:2%;
-    left:38px;
+    top: 2%;
+    left: 38px;
     width: 500px;
 }
 
@@ -127,82 +135,82 @@
 /*    width: 500px;*/
 /*}*/
 
-.hidden-button{
+.hidden-button {
     position: absolute;
-    top:230px;
-    right:0px;
+    top: 230px;
+    right: 0px;
 
 }
 
-.timer{
+.timer {
     position: absolute;
     top: 372px;
-    left:15px;
-    width:500px;
+    left: 15px;
+    width: 500px;
     color: black;
 }
 
-.form{
+.form {
     position: absolute;
     top: 37px;
     left: 458px;
 }
 
-.singin{
-    position:absolute;
+.singin {
+    position: absolute;
     top: 23px;
     left: 460px;
 }
 
-.login{
-    position:relative;
-    top:3.3%;
+.login {
+    position: relative;
+    top: 3.3%;
     left: 32%;
 }
 
-.login-center{
+.login-center {
     position: absolute;
     top: 15%;
     left: 15%;
-    width: 150%;
+    width: 350px;
 }
 
-.error{
-    position:absolute;
-    top:4%;
-    left:30%;
-    width:100%;
+.error {
+    position: absolute;
+    top: 4%;
+    left: 30%;
+    width: 100%;
 }
 
-.signup-center{
-    position:absolute;
-    top:15%;
-    left:37%;
-    width:150%
+.signup-center {
+    position: absolute;
+    top: 15%;
+    left: 37%;
+    width: 350px;
 }
 
-.hidden-button2{
-    position:absolute;
-    top:250px;
-    left:200px;
+.hidden-button2 {
+    position: absolute;
+    top: 250px;
+    left: 200px;
 }
 
-.button-center1{
-    position:absolute;
-    left:43%;
-    top:76%;
+.button-center1 {
+    position: absolute;
+    left: 43%;
+    top: 76%;
 }
 
-.button-center2{
-    position:relative;
-    left:23%;
+.button-center2 {
+    position: relative;
+    left: 23%;
 }
 
-.body{
-    position:absolute;
-    top:15%;
-    height:100%;
-    width:100%;
+.body {
+    position: absolute;
+    top: 15%;
+    height: 100%;
+    width: 100%;
 }
 
 h3 {

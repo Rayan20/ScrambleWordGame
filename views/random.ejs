@@ -25,22 +25,27 @@
     }
 
     function sleeper(ms) {
-        return function(x) {
+        return function (x) {
             return new Promise(resolve => setTimeout(() => resolve(x), ms));
         };
     }
+
     function timeUp() {
         var playPromise = document.getElementById('sound').play();
-        if(playPromise !== undefined){
+        if (playPromise !== undefined) {
             playPromise.then(alert('Times Up!'));
         }
     }
+
     var myTime;
+
     function startTimer() {
         myTime = setInterval(timeAction, 1000);
         var counter = 61;
         document.getElementById("time").disabled = true;
-        setTimeout(function(){document.getElementById("time").disabled = false;},61000);
+        setTimeout(function () {
+            document.getElementById("time").disabled = false;
+        }, 61000);
 
 
         function timeAction() {
@@ -56,11 +61,11 @@
 <% include partials/menu %>
 <audio id="sound" src="/public/audio/66136__aji__ding30603-spedup.wav" type="audio/wav" preload="auto"></audio>
 <div class="container-fluid">
-    <div class = "button-center1" style="background-color: aquamarine">
+    <div class="button-center1" style="background-color: aquamarine">
         <button type="button" class="btn btn-primary btn-lg" id="hider"
                 style="background-color: tomato; display:none" onclick="scrambl()">Scramble!
         </button>
-        <div class = "button-center2">
+        <div class="button-center2">
             <br>
             <button type="button" class="btn btn-primary btn-sm" id="time"
                     style="background-color: dodgerblue; display:none" onclick="startTimer()">Timer

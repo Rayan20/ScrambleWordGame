@@ -4,46 +4,44 @@
     <link rel="stylesheet" type="text/css" href="/public/stylesheets/style.css"/>
 </head>
 <body style="background-color:aquamarine">
-<h1><div class = "error" id="signupMSG" style = "color:red"><font size = "3"><%- signupMessage%></font></div></h1>
-        <div id="register" class="signup-center">
-            <form  action="/login/registerAccount" onSubmit = "return checkPassword(this)" method="post" autocomplete="on">
-                <h2> Sign up </h2>
-                <p>
-                    <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
-                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="" />
-                </p>
-                <p>
-                    <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
-                    <input id="emailsignup" name="email" required="required" type="email" placeholder=""/>
-                </p>
-                <p>
-                    <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-                    <input id="passwordsignup" name="password" required="required" type="password" placeholder=""/>
-                </p>
-                <p>
-                    <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
-                    <input id="passwordsignup_confirm" name="password2" required="required" type="password" placeholder=""/>
-                </p>
-                <p class="signin button">
-                    <input type="submit" value="Sign up"/>
-                </p>
-                <p class="change_link">
-                    Already a member?
-                    <a href="/login" class="to_register"> Go and log in </a>
-                </p>
-                <p class = "change_link">
-                    Be a guest
-                    <a href = "/login/guest" class = "to_register">Try it out</a>
-                </p>
-            </form>
-        </div>
-
-    </div>
+<h1>
+    <div class="error" id="loginMsg" style="color:red"><font size="3"><%-signupMessage %></font></div>
+</h1>
+<div id="register" class="signup-center">
+    <form action="/login/registerAccount" onsubmit="return checkPassword(this)" method="post" autocomplete="on">
+        <h2> Sign up </h2>
+        <p>
+            <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+            <input id="usernamesignup" name="username" required="required" type="text" placeholder=""/>
+        </p>
+        <p>
+            <label for="emailsignup" class="youmail" data-icon="e"> Your email</label>
+            <input id="emailsignup" name="email" required="required" type="email" placeholder=""/>
+        </p>
+        <p>
+            <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
+            <input id="passwordsignup" name="password" required="required" type="password" placeholder=""/>
+        </p>
+        <p>
+            <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
+            <input id="passwordsignup_confirm" name="password2" required="required" type="password" placeholder=""/>
+        </p>
+        <p class="signin button">
+            <input type="submit" value="Sign up"/>
+        </p>
+        <p class="change_link">
+            Already a member?
+            <a href="/login" class="to_register"> Go and log in </a>
+        </p>
+        <p class="change_link">
+            Be a guest
+            <a href="/login/guest" class="to_register">Try it out</a>
+        </p>
+    </form>
 </div>
 
 <script>
-    // Function to check Whether both passwords
-    // is same or not.
+    // Function to check Whether both passwords is same or not.
     function checkPassword(form) {
         password1 = form.password.value;
         password2 = form.password2.value;
@@ -62,12 +60,12 @@
 
         // If Not same return False.
         else if (password1 !== password2) {
-            alert ("\nPassword did not match: Please try again...")
+            alert("\nPassword did not match: Please try again...")
             return false;
         }
 
         // If same return True.
-        else{
+        else {
             return true;
         }
     }

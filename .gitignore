@@ -1,4 +1,4 @@
 # Project exclude paths
 /node_modules/
-environment.config.js
-environment.config-heroku.js
+config.js
+/config.js
